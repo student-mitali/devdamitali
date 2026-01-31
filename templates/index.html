@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hostel Issue Tracker | IIT Hackathon</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <div class="app-header center">
+        <h1>Hostel Issue Tracker</h1>
+        <p class="tagline">
+            A centralized platform to report and resolve hostel maintenance issues efficiently.
+        </p>
+        <div class="info-points">
+            <p>🛠️ Report issues instantly</p>
+            <p>📍 Linked to your room number</p>
+            <p>📊 Admins track issues in real time</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="center">Report an Issue</h2>
+
+        <form method="POST">
+            <input type="text" name="room" placeholder="Room Number (e.g. B-204)" required>
+
+            <select name="category" required>
+                <option value="">Select Category</option>
+                <option value="Water">Water</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Cleaning">Cleaning</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <select name="priority" required>
+                <option value="">Select Priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <textarea name="issue" placeholder="Describe the issue (what, where, since when)..." rows="4" required></textarea>
+
+            <button type="submit">Submit Issue 🚀</button>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+
+    <p class="center" style="margin-top:20px; color:#64748b; font-size:0.85rem;">
+        Built as a prototype for IIT Madras Hackathon • Phase-1 MVP
+    </p>
+
+</div>
+
+</body>
+</html>

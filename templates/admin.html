@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard | Hostel Issue Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Admin Dashboard</h1>
+
+    <div class="stats">
+        <div class="stat-card">Total Issues<br><span>{{ total }}</span></div>
+        <div class="stat-card">Pending<br><span>{{ pending }}</span></div>
+        <div class="stat-card">In Progress<br><span>{{ in_progress }}</span></div>
+        <div class="stat-card">Resolved<br><span>{{ resolved }}</span></div>
+    </div>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Room</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Issue</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for issue in issues %}
+        <tr>
+            <td>{{ issue["id"] }}</td>
+            <td>{{ issue["room"] }}</td>
+            <td>{{ issue["category"] }}</td>
+            <td class="priority {{ issue['priority']|lower }}">{{ issue["priority"] }}</td>
+            <td>{{ issue["issue"] }}</td>
+            <td>{{ issue["time"] }}</td>
+            <td class="status {{ issue['status']|lower|replace('-', '') }}">
+                {{ issue["status"] }}
+            </td>
+            <td>
+                <form action="{{ url_for('update', id=issue['id'], status='In-Progress') }}" method="post" style="display:inline;">
+                    <button type="submit" class="inprogress" onclick="return confirm('Mark this issue as In Progress?')">In Progress</button>
+                </form>
+                <form action="{{ url_for('update', id=issue['id'], status='Resolved') }}" method="post" style="display:inline;">
+                    <button type="submit" class="resolved" onclick="return confirm('Mark this issue as Resolved?')">Resolve</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/logout" class="logout">Logout</a>
+</div>
+
+</body>
+</html>
