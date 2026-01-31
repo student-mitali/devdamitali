@@ -1,0 +1,126 @@
+/* -------- GLOBAL STYLES -------- */
+body {
+    font-family: Inter, Arial, sans-serif;
+    background: #020617;
+    color: #e5e7eb;
+    padding: 30px;
+}
+
+.center { text-align: center; }
+
+.app-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.app-header h1 {
+    font-size: 2.6rem;
+}
+
+.tagline {
+    color: #94a3b8;
+    margin: 10px 0 20px;
+}
+
+.info-points p {
+    color: #cbd5f5;
+    font-size: 0.95rem;
+}
+
+.card, .container {
+    background: #020617;
+    border: 1px solid #1e293b;
+    padding: 30px;
+    border-radius: 16px;
+    margin-top: 30px;
+}
+
+input, textarea, select, button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    background: #020617;
+    color: white;
+}
+
+button {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover { opacity: 0.9; }
+
+.alert.success {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 10px;
+    background: rgba(34,197,94,0.15);
+    color: #4ade80;
+    text-align: center;
+}
+
+/* -------- STATS CARDS -------- */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    border: 1px solid #1e293b;
+    padding: 20px;
+    border-radius: 14px;
+    text-align: center;
+}
+
+/* -------- TABLES -------- */
+table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #334155;
+    text-align: center;
+}
+
+tr:hover { background-color: rgba(59, 130, 246, 0.1); }
+
+.logout { display: inline-block; margin-top: 20px; color: #93c5fd; }
+
+/* -------- STATUS COLORS -------- */
+.status.pending { background: rgba(251, 191, 36, 0.15); color: #facc15; }
+.status.inprogress { background: rgba(59, 130, 246, 0.15); color: #93c5fd; }
+.status.resolved { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+
+/* -------- PRIORITY COLORS -------- */
+.priority.low { color: #a3e635; }
+.priority.medium { color: #facc15; }
+.priority.high { color: #f87171; font-weight: bold; }
+
+/* -------- ACTION BUTTONS -------- */
+td form { display: inline-block; margin: 4px; }
+button.inprogress { background: #2563eb; }
+button.inprogress:hover { background: #1e40af; }
+button.resolved { background: #16a34a; }
+button.resolved:hover { background: #15803d; }
+
+/* -------- ERROR MESSAGE -------- */
+.error {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    text-align: center;
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 768px) {
+    .stats { grid-template-columns: 1fr; }
+    table { font-size: 0.9rem; }
+}
